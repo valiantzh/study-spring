@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.spring.mybatis.dao.OPOperatorDAO">
+  <resultMap id="BaseResultMap" type="com.study.spring.mybatis.entity.OPOperator">
+    <id column="OperID" jdbcType="VARCHAR" property="operID" />
+    <result column="DepartmentID" jdbcType="VARCHAR" property="departmentID" />
+    <result column="UserID" jdbcType="VARCHAR" property="userID" />
+    <result column="OperType" jdbcType="INTEGER" property="operType" />
+    <result column="OperName" jdbcType="VARCHAR" property="operName" />
+    <result column="OperPassword" jdbcType="VARCHAR" property="operPassword" />
+    <result column="PlainPassword" jdbcType="VARCHAR" property="plainPassword" />
+    <result column="BindCardID" jdbcType="VARCHAR" property="bindCardID" />
+    <result column="BindMobile" jdbcType="VARCHAR" property="bindMobile" />
+    <result column="OfficeTel" jdbcType="VARCHAR" property="officeTel" />
+    <result column="Mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="Email" jdbcType="VARCHAR" property="email" />
+    <result column="CreateDate" jdbcType="DATE" property="createDate" />
+    <result column="CreateTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UpperUserID" jdbcType="VARCHAR" property="upperUserID" />
+    <result column="OperStatus" jdbcType="VARCHAR" property="operStatus" />
+    <result column="LastModifyTime" jdbcType="TIMESTAMP" property="lastModifyTime" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    OperID, DepartmentID, UserID, OperType, OperName, OperPassword, PlainPassword, BindCardID, 
+    BindMobile, OfficeTel, Mobile, Email, CreateDate, CreateTime, UpperUserID, OperStatus, 
+    LastModifyTime, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from opoperator
+    where OperID = #{operID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from opoperator
+    where OperID = #{operID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.study.spring.mybatis.entity.OPOperator">
+    insert into opoperator (OperID, DepartmentID, UserID, 
+      OperType, OperName, OperPassword, 
+      PlainPassword, BindCardID, BindMobile, 
+      OfficeTel, Mobile, Email, 
+      CreateDate, CreateTime, UpperUserID, 
+      OperStatus, LastModifyTime, Remark
+      )
+    values (#{operID,jdbcType=VARCHAR}, #{departmentID,jdbcType=VARCHAR}, #{userID,jdbcType=VARCHAR}, 
+      #{operType,jdbcType=INTEGER}, #{operName,jdbcType=VARCHAR}, #{operPassword,jdbcType=VARCHAR}, 
+      #{plainPassword,jdbcType=VARCHAR}, #{bindCardID,jdbcType=VARCHAR}, #{bindMobile,jdbcType=VARCHAR}, 
+      #{officeTel,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP}, #{upperUserID,jdbcType=VARCHAR}, 
+      #{operStatus,jdbcType=VARCHAR}, #{lastModifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.study.spring.mybatis.entity.OPOperator">
+    insert into opoperator
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="operID != null">
+        OperID,
+      </if>
+      <if test="departmentID != null">
+        DepartmentID,
+      </if>
+      <if test="userID != null">
+        UserID,
+      </if>
+      <if test="operType != null">
+        OperType,
+      </if>
+      <if test="operName != null">
+        OperName,
+      </if>
+      <if test="operPassword != null">
+        OperPassword,
+      </if>
+      <if test="plainPassword != null">
+        PlainPassword,
+      </if>
+      <if test="bindCardID != null">
+        BindCardID,
+      </if>
+      <if test="bindMobile != null">
+        BindMobile,
+      </if>
+      <if test="officeTel != null">
+        OfficeTel,
+      </if>
+      <if test="mobile != null">
+        Mobile,
+      </if>
+      <if test="email != null">
+        Email,
+      </if>
+      <if test="createDate != null">
+        CreateDate,
+      </if>
+      <if test="createTime != null">
+        CreateTime,
+      </if>
+      <if test="upperUserID != null">
+        UpperUserID,
+      </if>
+      <if test="operStatus != null">
+        OperStatus,
+      </if>
+      <if test="lastModifyTime != null">
+        LastModifyTime,
+      </if>
+      <if test="remark != null">
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="operID != null">
+        #{operID,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentID != null">
+        #{departmentID,jdbcType=VARCHAR},
+      </if>
+      <if test="userID != null">
+        #{userID,jdbcType=VARCHAR},
+      </if>
+      <if test="operType != null">
+        #{operType,jdbcType=INTEGER},
+      </if>
+      <if test="operName != null">
+        #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="operPassword != null">
+        #{operPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="plainPassword != null">
+        #{plainPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="bindCardID != null">
+        #{bindCardID,jdbcType=VARCHAR},
+      </if>
+      <if test="bindMobile != null">
+        #{bindMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="officeTel != null">
+        #{officeTel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upperUserID != null">
+        #{upperUserID,jdbcType=VARCHAR},
+      </if>
+      <if test="operStatus != null">
+        #{operStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.study.spring.mybatis.entity.OPOperator">
+    update opoperator
+    <set>
+      <if test="departmentID != null">
+        DepartmentID = #{departmentID,jdbcType=VARCHAR},
+      </if>
+      <if test="userID != null">
+        UserID = #{userID,jdbcType=VARCHAR},
+      </if>
+      <if test="operType != null">
+        OperType = #{operType,jdbcType=INTEGER},
+      </if>
+      <if test="operName != null">
+        OperName = #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="operPassword != null">
+        OperPassword = #{operPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="plainPassword != null">
+        PlainPassword = #{plainPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="bindCardID != null">
+        BindCardID = #{bindCardID,jdbcType=VARCHAR},
+      </if>
+      <if test="bindMobile != null">
+        BindMobile = #{bindMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="officeTel != null">
+        OfficeTel = #{officeTel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        Mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CreateDate = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="createTime != null">
+        CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upperUserID != null">
+        UpperUserID = #{upperUserID,jdbcType=VARCHAR},
+      </if>
+      <if test="operStatus != null">
+        OperStatus = #{operStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        LastModifyTime = #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where OperID = #{operID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.study.spring.mybatis.entity.OPOperator">
+    update opoperator
+    set DepartmentID = #{departmentID,jdbcType=VARCHAR},
+      UserID = #{userID,jdbcType=VARCHAR},
+      OperType = #{operType,jdbcType=INTEGER},
+      OperName = #{operName,jdbcType=VARCHAR},
+      OperPassword = #{operPassword,jdbcType=VARCHAR},
+      PlainPassword = #{plainPassword,jdbcType=VARCHAR},
+      BindCardID = #{bindCardID,jdbcType=VARCHAR},
+      BindMobile = #{bindMobile,jdbcType=VARCHAR},
+      OfficeTel = #{officeTel,jdbcType=VARCHAR},
+      Mobile = #{mobile,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      CreateDate = #{createDate,jdbcType=DATE},
+      CreateTime = #{createTime,jdbcType=TIMESTAMP},
+      UpperUserID = #{upperUserID,jdbcType=VARCHAR},
+      OperStatus = #{operStatus,jdbcType=VARCHAR},
+      LastModifyTime = #{lastModifyTime,jdbcType=TIMESTAMP},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where OperID = #{operID,jdbcType=VARCHAR}
+  </update>
+</mapper>

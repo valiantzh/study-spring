@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.spring.mybatis.dao.OPRoleDAO">
+  <resultMap id="BaseResultMap" type="com.study.spring.mybatis.entity.OPRole">
+    <id column="RoleID" jdbcType="INTEGER" property="roleID" />
+    <result column="RoleName" jdbcType="VARCHAR" property="roleName" />
+    <result column="OperID" jdbcType="VARCHAR" property="operID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RoleID, RoleName, OperID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oprole
+    where RoleID = #{roleID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from oprole
+    where RoleID = #{roleID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.study.spring.mybatis.entity.OPRole">
+    insert into oprole (RoleID, RoleName, OperID
+      )
+    values (#{roleID,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{operID,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.study.spring.mybatis.entity.OPRole">
+    insert into oprole
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleID != null">
+        RoleID,
+      </if>
+      <if test="roleName != null">
+        RoleName,
+      </if>
+      <if test="operID != null">
+        OperID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleID != null">
+        #{roleID,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="operID != null">
+        #{operID,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.study.spring.mybatis.entity.OPRole">
+    update oprole
+    <set>
+      <if test="roleName != null">
+        RoleName = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="operID != null">
+        OperID = #{operID,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RoleID = #{roleID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.study.spring.mybatis.entity.OPRole">
+    update oprole
+    set RoleName = #{roleName,jdbcType=VARCHAR},
+      OperID = #{operID,jdbcType=VARCHAR}
+    where RoleID = #{roleID,jdbcType=INTEGER}
+  </update>
+</mapper>
